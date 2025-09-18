@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stratford Gray | Your Agile Partner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        .bg-pattern {
+            background-color: #1a1a1a;
+            background-image: radial-gradient(circle at 1px 1px, #3c3c3c 1px, transparent 0);
+            background-size: 25px 25px;
+        }
+        /* Simple transition for page sections */
+        .page-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .page-section.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .nav-link.active {
+            color: #D4AF37;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <div class="min-h-screen flex flex-col">
+        
+        <!-- Header -->
+        <header class="w-full p-6 md:p-8 sticky top-0 bg-gray-900/80 backdrop-blur-sm z-50 border-b border-gray-700/50">
+            <div class="container mx-auto flex justify-between items-center">
+                <div class="flex items-center gap-3 cursor-pointer" onclick="showPage('home')">
+                     <svg class="w-10 h-10 text-[#D4AF37]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M75 25 C75 10, 60 10, 50 10 S 25 10, 25 25" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+                        <path d="M25 75 C25 90, 40 90, 50 90 S 75 90, 75 75" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+                        <line x1="25" y1="50" x2="75" y2="50" stroke="#A0AEC0" stroke-width="8" stroke-linecap="round"/>
+                    </svg>
+                    <span class="text-xl font-bold tracking-wider text-white">STRATFORD GRAY</span>
+                </div>
+                <nav id="desktop-nav" class="hidden md:flex items-center gap-8 text-sm font-medium">
+                    <a href="#home" class="nav-link hover:text-white transition-colors" onclick="showPage('home', this)">Home</a>
+                    <a href="#about" class="nav-link hover:text-white transition-colors" onclick="showPage('about', this)">About Us</a>
+                    <a href="#contact" class="nav-link bg-[#D4AF37] text-gray-900 px-4 py-2 rounded-md hover:bg-opacity-90 transition-all" onclick="showPage('contact', this)">Contact</a>
+                </nav>
+                <button id="mobile-menu-btn" class="md:hidden text-white">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+             <!-- Mobile Menu -->
+            <div id="mobile-nav" class="hidden md:hidden mt-4">
+                <a href="#home" class="block py-2 px-4 text-sm hover:bg-gray-800 rounded nav-link" onclick="showPage('home', this); closeMobileMenu();">Home</a>
+                <a href="#about" class="block py-2 px-4 text-sm hover:bg-gray-800 rounded nav-link" onclick="showPage('about', this); closeMobileMenu();">About Us</a>
+                <a href="#contact" class="block py-2 px-4 text-sm hover:bg-gray-800 rounded nav-link" onclick="showPage('contact', this); closeMobileMenu();">Contact</a>
+            </div>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="flex-grow">
+
+            <!-- Home Page Section -->
+            <section id="home" class="page-section active bg-pattern">
+                 <div class="container mx-auto px-6 py-24 text-center flex flex-col items-center justify-center min-h-[70vh]">
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-playfair font-bold text-white">
+                        Navigating Complexity, <span class="text-[#D4AF37]">Delivering Clarity.</span>
+                    </h1>
+                    
+                    <p class="mt-8 text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">Your Agile Partner.</p>
+
+                    <div class="mt-12">
+                        <a href="#about" class="bg-[#D4AF37] text-gray-900 font-bold py-4 px-8 rounded-lg hover:bg-opacity-90 transition-all text-lg" onclick="showPage('about')">
+                            Discover Our Solutions
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Us Page Section -->
+            <section id="about" class="page-section">
+                <div class="container mx-auto px-6 py-16 md:py-24">
+                    <div class="text-center mb-16">
+                         <h2 class="text-3xl md:text-5xl font-playfair font-bold text-white">Bespoke Recruitment, Redefined</h2>
+                         <p class="mt-4 text-lg text-gray-400 max-w-3xl mx-auto">We are an agile recruitment partner dedicated to the legal sector, delivering a flexible and personal service that puts candidates and clients first.</p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="text-gray-300 space-y-4 text-justify">
+                            <h3 class="text-2xl font-bold text-white font-playfair">Our Philosophy</h3>
+                            <p>At Stratford Gray, we believe recruitment is more than just filling a vacancy. It's about forging lasting partnerships. We operate with unparalleled agility, adapting our process to the unique needs of every client and the specific career aspirations of each candidate. Our approach is built on a foundation of deep industry knowledge, transparent communication, and genuine care. We take the time to understand the nuances of your firm's culture and the subtleties of a candidate's ambition, ensuring a perfect alignment that fosters long-term success.</p>
+                             <p>Our commitment to a flexible service means we are always responsive, always available, and always thinking ahead. We are your strategic partner, invested in your growth and success.</p>
+                        </div>
+                        <div class="bg-gray-800 p-8 rounded-lg shadow-2xl">
+                            <div class="flex items-center gap-6">
+                                <img src="https://placehold.co/100x100/D4AF37/1a1a1a?text=JJ" alt="John Jennings, Director" class="rounded-full w-24 h-24 border-4 border-gray-700">
+                                <div>
+                                    <h4 class="text-2xl font-bold text-white">John Jennings</h4>
+                                    <p class="text-[#D4AF37] font-medium">Director</p>
+                                </div>
+                            </div>
+                            <p class="mt-6 text-gray-400">"With over 10 years' experience dedicated to the legal recruitment sector, I founded Stratford Gray to offer a more tailored and responsive service. My passion is connecting exceptional talent with leading firms, building careers and businesses in the process. I am personally committed to every search we undertake."</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Page Section -->
+            <section id="contact" class="page-section">
+                 <div class="container mx-auto px-6 py-16 md:py-24">
+                     <div class="text-center mb-16">
+                         <h2 class="text-3xl md:text-5xl font-playfair font-bold text-white">Get In Touch</h2>
+                         <p class="mt-4 text-lg text-gray-400 max-w-3xl mx-auto">Let's discuss how we can help you achieve your goals. Reach out today for a confidential consultation.</p>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-12">
+                         <div class="space-y-6">
+                             <div>
+                                 <h3 class="text-xl font-bold text-white font-playfair flex items-center gap-3">
+                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#D4AF37]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                                     Email
+                                 </h3>
+                                 <a href="mailto:john@stratfordgray.com" class="text-gray-300 hover:text-[#D4AF37] transition-colors">john@stratfordgray.com</a>
+                             </div>
+                              <div>
+                                 <h3 class="text-xl font-bold text-white font-playfair flex items-center gap-3">
+                                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#D4AF37]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                                     Phone
+                                 </h3>
+                                 <a href="tel:07803504243" class="text-gray-300 hover:text-[#D4AF37] transition-colors">07803 504243</a>
+                             </div>
+                         </div>
+                         <form id="contact-form" class="space-y-4" data-netlify="true">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-400">Full Name</label>
+                                <input type="text" id="name" name="name" required class="mt-1 block w-full bg-gray-800 border-gray-700 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-[#D4AF37] focus:border-[#D4AF37]">
+                            </div>
+                             <div>
+                                <label for="email" class="block text-sm font-medium text-gray-400">Email Address</label>
+                                <input type="email" id="email" name="email" required class="mt-1 block w-full bg-gray-800 border-gray-700 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-[#D4AF37] focus:border-[#D4AF37]">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-400">Message</label>
+                                <textarea id="message" name="message" rows="4" required class="mt-1 block w-full bg-gray-800 border-gray-700 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-[#D4AF37] focus:border-[#D4AF37]"></textarea>
+                            </div>
+                            <div>
+                                 <button type="submit" class="w-full bg-[#D4AF37] text-gray-900 font-bold py-3 px-6 rounded-lg hover:bg-opacity-90 transition-all text-lg">
+                                    Send Message
+                                </button>
+                            </div>
+                            <p id="form-status" class="text-center text-sm mt-4"></p>
+                         </form>
+                    </div>
+                 </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="w-full p-6 md:p-8 bg-gray-900 border-t border-gray-700/50">
+            <div class="container mx-auto text-center text-gray-500 text-sm">
+                &copy; 2025 Stratford Gray. All Rights Reserved.
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Page Navigation ---
+            const pages = document.querySelectorAll('.page-section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileNav = document.getElementById('mobile-nav');
+
+            window.showPage = (pageId, clickedLink) => {
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                document.getElementById(pageId).classList.add('active');
+
+                // Update active state on nav links
+                navLinks.forEach(link => link.classList.remove('active', 'text-white', 'bg-[#D4AF37]', 'text-gray-900'));
+                
+                if (clickedLink) {
+                     navLinks.forEach(link => {
+                        if (link.getAttribute('href') === `#${pageId}`) {
+                            if (link.textContent === 'Contact') {
+                                link.classList.add('bg-[#D4AF37]', 'text-gray-900');
+                            } else {
+                                link.classList.add('active', 'text-white');
+                            }
+                        }
+                    });
+                } else {
+                     navLinks.forEach(link => {
+                         if (link.getAttribute('href') === `#${pageId}`) {
+                             link.classList.add('active', 'text-white');
+                         }
+                     });
+                }
+                
+                window.scrollTo(0, 0);
+            }
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileNav.classList.toggle('hidden');
+            });
+            
+            window.closeMobileMenu = () => {
+                 mobileNav.classList.add('hidden');
+            }
+
+            // --- Contact Form ---
+            const contactForm = document.getElementById('contact-form');
+            const formStatus = document.getElementById('form-status');
+
+            if(contactForm && contactForm.getAttribute('data-netlify') !== 'true') {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    formStatus.textContent = 'Sending...';
+                    formStatus.classList.remove('text-red-400', 'text-green-400');
+                    formStatus.classList.add('text-gray-400');
+
+                    // MOCK FORM SUBMISSION for local viewing
+                    setTimeout(() => {
+                        formStatus.textContent = 'Thank you! Your message has been sent.';
+                        formStatus.classList.add('text-green-400');
+                        contactForm.reset();
+                    }, 1500);
+                });
+            }
+            
+            // Set initial page
+            showPage('home', document.querySelector('.nav-link[href="#home"]'));
+        });
+    </script>
+</body>
+</html>
+
