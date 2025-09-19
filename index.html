@@ -286,7 +286,7 @@
                     cvResults.style.display = 'none';
 
                     try {
-                        const apiKey = "AIzaSyCSE8QG-0hl4wPFQhWSFNyr5sClGw0qm0o";
+                        const apiKey = "NEXT_PUBLIC_GEMINI_API_KEY";
                         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
                         const systemPrompt = "You are an expert legal recruitment consultant for 'Stratford Gray'. Your tone is professional, encouraging, and helpful. Analyze the following CV text and provide feedback in three distinct sections. Use markdown for formatting. 1. **Key Strengths Summary:** Briefly summarize the candidate's strongest qualifications. 2. **Actionable Suggestions:** Provide 3-4 specific, bulleted tips for improving the CV for the legal sector. 3. **Cover Letter Opener:** Write one compelling opening sentence for a cover letter based on their experience.";
 
@@ -352,7 +352,7 @@
                     jdResults.style.display = 'none';
 
                     try {
-                        const apiKey = "AIzaSyCSE8QG-0hl4wPFQhWSFNyr5sClGw0qm0o";
+                        const apiKey = "NEXT_PUBLIC_GEMINI_API_KEY";
                         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
                         const systemPrompt = "You are an expert legal recruitment copywriter for 'Stratford Gray'. Your tone is professional, engaging, and authoritative. Create a full job description based on the provided title and key responsibilities. The description must be well-structured with the following markdown sections: **The Role**, **Key Responsibilities**, **The Ideal Candidate**, and **What We Offer**. Ensure the language is inclusive and compelling to attract top-tier legal professionals.";
 
@@ -397,4 +397,5 @@
     </script>
 </body>
 </html>
+
 
