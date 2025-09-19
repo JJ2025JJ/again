@@ -35,6 +35,18 @@
         .nav-link.active {
             color: #D4AF37;
         }
+        .loader {
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #D4AF37;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-200">
@@ -124,45 +136,78 @@
                  <div class="container mx-auto px-6 py-16 md:py-24">
                      <div class="text-center mb-16">
                          <h2 class="text-3xl md:text-5xl font-playfair font-bold text-white">Get In Touch</h2>
-                         <p class="mt-4 text-lg text-gray-400 max-w-3xl mx-auto">Let's discuss how we can help you achieve your goals. Reach out today for a confidential consultation.</p>
+                         <p class="mt-4 text-lg text-gray-400 max-w-3xl mx-auto">We welcome enquiries from clients and candidates. Explore the options below to connect with us.</p>
                     </div>
-                    <div class="grid md:grid-cols-2 gap-12">
-                         <div class="space-y-6">
-                             <div>
-                                 <h3 class="text-xl font-bold text-white font-playfair flex items-center gap-3">
-                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#D4AF37]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                                     Email
-                                 </h3>
-                                 <a href="mailto:john@stratfordgray.com" class="text-gray-300 hover:text-[#D4AF37] transition-colors">john@stratfordgray.com</a>
-                             </div>
-                              <div>
-                                 <h3 class="text-xl font-bold text-white font-playfair flex items-center gap-3">
-                                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#D4AF37]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                                     Phone
-                                 </h3>
-                                 <a href="tel:07803504243" class="text-gray-300 hover:text-[#D4AF37] transition-colors">07803 504243</a>
-                             </div>
-                         </div>
-                         <form id="contact-form" class="space-y-4" data-netlify="true">
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-gray-400">Full Name</label>
-                                <input type="text" id="name" name="name" required class="mt-1 block w-full bg-gray-800 border-gray-700 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-[#D4AF37] focus:border-[#D4AF37]">
-                            </div>
-                             <div>
-                                <label for="email" class="block text-sm font-medium text-gray-400">Email Address</label>
-                                <input type="email" id="email" name="email" required class="mt-1 block w-full bg-gray-800 border-gray-700 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-[#D4AF37] focus:border-[#D4AF37]">
-                            </div>
-                            <div>
-                                <label for="message" class="block text-sm font-medium text-gray-400">Message</label>
-                                <textarea id="message" name="message" rows="4" required class="mt-1 block w-full bg-gray-800 border-gray-700 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-[#D4AF37] focus:border-[#D4AF37]"></textarea>
-                            </div>
-                            <div>
-                                 <button type="submit" class="w-full bg-[#D4AF37] text-gray-900 font-bold py-3 px-6 rounded-lg hover:bg-opacity-90 transition-all text-lg">
-                                    Send Message
+                    <div class="grid lg:grid-cols-2 gap-12">
+                        <!-- Candidate Column -->
+                        <div class="space-y-8">
+                            <h3 class="text-2xl font-bold text-white font-playfair text-center">For Candidates</h3>
+                            <!-- New AI CV Assistant -->
+                            <div class="bg-gray-800 p-8 rounded-lg shadow-2xl">
+                                <h4 class="text-xl font-bold text-white flex items-center gap-2">✨ AI-Powered CV Assistant</h4>
+                                <p class="mt-2 text-gray-400 text-sm">Paste your CV below to get instant feedback and suggestions tailored for the legal sector.</p>
+                                <div class="mt-4">
+                                    <textarea id="cv-input" rows="8" class="w-full bg-gray-900 border-gray-700 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-[#D4AF37] focus:border-[#D4AF37]" placeholder="Paste your CV text here..."></textarea>
+                                </div>
+                                <button id="cv-submit-btn" class="mt-4 w-full bg-gray-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-500 transition-all flex items-center justify-center gap-2">
+                                    <span id="cv-btn-text">Get Feedback</span>
+                                    <div id="cv-loader" class="loader hidden"></div>
                                 </button>
+                                <div id="cv-results" class="mt-6 text-left border-t border-gray-700 pt-4" style="display: none;"></div>
                             </div>
-                            <p id="form-status" class="text-center text-sm mt-4"></p>
-                         </form>
+                            <!-- CV Submission -->
+                             <div class="bg-gray-800 p-8 rounded-lg shadow-2xl flex flex-col items-center text-center">
+                                <h4 class="text-xl font-bold text-white">Ready to Apply?</h4>
+                                <p class="mt-2 text-gray-400 text-sm">Submit your CV for a confidential review. We accept formats such as .pdf, .doc, .docx, etc.</p>
+                                <a href="mailto:john@stratfordgray.com?subject=CV Submission - Stratford Gray" class="mt-4 w-full max-w-xs bg-[#D4AF37] text-gray-900 font-bold py-3 px-6 rounded-lg hover:bg-opacity-90 transition-all text-lg flex items-center justify-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                      <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1M6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                    Submit Your CV
+                                 </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Client Column -->
+                         <div class="space-y-8">
+                            <h3 class="text-2xl font-bold text-white font-playfair text-center">For Clients</h3>
+                             <div class="p-8 rounded-lg border border-gray-700 h-fit">
+                                 <h4 class="text-xl font-bold text-white text-center mb-6">General Enquiries</h4>
+                                 <form id="contact-form" class="space-y-4" data-netlify="true">
+                                    <div>
+                                        <label for="name" class="block text-sm font-medium text-gray-400">Full Name</label>
+                                        <input type="text" id="name" name="name" required class="mt-1 block w-full bg-gray-800 border-gray-700 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-[#D4AF37] focus:border-[#D4AF37]">
+                                    </div>
+                                     <div>
+                                        <label for="email" class="block text-sm font-medium text-gray-400">Email Address</label>
+                                        <input type="email" id="email" name="email" required class="mt-1 block w-full bg-gray-800 border-gray-700 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-[#D4AF37] focus:border-[#D4AF37]">
+                                    </div>
+                                    <div>
+                                        <label for="message" class="block text-sm font-medium text-gray-400">Message</label>
+                                        <textarea id="message" name="message" rows="4" required class="mt-1 block w-full bg-gray-800 border-gray-700 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-[#D4AF37] focus:border-[#D4AF37]"></textarea>
+                                    </div>
+                                    <div>
+                                         <button type="submit" class="w-full bg-gray-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-500 transition-all text-lg">
+                                            Send Message
+                                        </button>
+                                    </div>
+                                 </form>
+                             </div>
+                             <!-- New AI Job Description Assistant -->
+                            <div class="bg-gray-800 p-8 rounded-lg shadow-2xl">
+                                <h4 class="text-xl font-bold text-white flex items-center gap-2">📝 AI Job Description Assistant</h4>
+                                <p class="mt-2 text-gray-400 text-sm">Enter a job title and key responsibilities to generate a compelling job description.</p>
+                                <div class="mt-4 space-y-4">
+                                    <input type="text" id="jd-title" class="w-full bg-gray-900 border-gray-700 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-[#D4AF37] focus:border-[#D4AF37]" placeholder="e.g., Corporate Solicitor">
+                                    <textarea id="jd-input" rows="5" class="w-full bg-gray-900 border-gray-700 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-[#D4AF37] focus:border-[#D4AF37]" placeholder="e.g., Key responsibilities: M&A transactions, drafting contracts, advising on corporate governance..."></textarea>
+                                </div>
+                                <button id="jd-submit-btn" class="mt-4 w-full bg-gray-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-500 transition-all flex items-center justify-center gap-2">
+                                    <span id="jd-btn-text">Generate Description</span>
+                                    <div id="jd-loader" class="loader hidden"></div>
+                                </button>
+                                <div id="jd-results" class="mt-6 text-left border-t border-gray-700 pt-4" style="display: none;"></div>
+                            </div>
+                         </div>
                     </div>
                  </div>
             </section>
@@ -191,7 +236,6 @@
                 });
                 document.getElementById(pageId).classList.add('active');
 
-                // Update active state on nav links
                 navLinks.forEach(link => link.classList.remove('active', 'text-white', 'bg-[#D4AF37]', 'text-gray-900'));
                 
                 if (clickedLink) {
@@ -215,36 +259,140 @@
                 window.scrollTo(0, 0);
             }
             
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileNav.classList.toggle('hidden');
-            });
+            mobileMenuBtn.addEventListener('click', () => { mobileNav.classList.toggle('hidden'); });
+            window.closeMobileMenu = () => { mobileNav.classList.add('hidden'); }
             
-            window.closeMobileMenu = () => {
-                 mobileNav.classList.add('hidden');
-            }
+            showPage('home', document.querySelector('.nav-link[href="#home"]'));
 
-            // --- Contact Form ---
-            const contactForm = document.getElementById('contact-form');
-            const formStatus = document.getElementById('form-status');
+            // --- Gemini AI CV Assistant ---
+            const cvInput = document.getElementById('cv-input');
+            const cvSubmitBtn = document.getElementById('cv-submit-btn');
+            const cvResults = document.getElementById('cv-results');
+            const cvLoader = document.getElementById('cv-loader');
+            const cvBtnText = document.getElementById('cv-btn-text');
 
-            if(contactForm && contactForm.getAttribute('data-netlify') !== 'true') {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    formStatus.textContent = 'Sending...';
-                    formStatus.classList.remove('text-red-400', 'text-green-400');
-                    formStatus.classList.add('text-gray-400');
+            if (cvSubmitBtn) {
+                cvSubmitBtn.addEventListener('click', async () => {
+                    const cvText = cvInput.value;
+                    if (cvText.trim().length < 50) {
+                        cvResults.style.display = 'block';
+                        cvResults.innerHTML = `<p class="text-red-400">Please paste in your full CV for analysis.</p>`;
+                        return;
+                    }
 
-                    // MOCK FORM SUBMISSION for local viewing
-                    setTimeout(() => {
-                        formStatus.textContent = 'Thank you! Your message has been sent.';
-                        formStatus.classList.add('text-green-400');
-                        contactForm.reset();
-                    }, 1500);
+                    cvSubmitBtn.disabled = true;
+                    cvLoader.classList.remove('hidden');
+                    cvBtnText.textContent = 'Analyzing...';
+                    cvResults.style.display = 'none';
+
+                    try {
+                        const apiKey = "";
+                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                        const systemPrompt = "You are an expert legal recruitment consultant for 'Stratford Gray'. Your tone is professional, encouraging, and helpful. Analyze the following CV text and provide feedback in three distinct sections. Use markdown for formatting. 1. **Key Strengths Summary:** Briefly summarize the candidate's strongest qualifications. 2. **Actionable Suggestions:** Provide 3-4 specific, bulleted tips for improving the CV for the legal sector. 3. **Cover Letter Opener:** Write one compelling opening sentence for a cover letter based on their experience.";
+
+                        const payload = {
+                            contents: [{ parts: [{ text: `Here is the CV text:\n\n${cvText}` }] }],
+                            systemInstruction: { parts: [{ text: systemPrompt }] },
+                        };
+
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        if (!response.ok) throw new Error(`API Error: ${response.status} ${response.statusText}`);
+                        const result = await response.json();
+                        const feedback = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                        
+                        if (feedback) {
+                            let htmlFeedback = feedback
+                                .replace(/\*\*(.*?)\*\*/g, '<h5 class="font-bold text-white mt-4 mb-2">$1</h5>')
+                                .replace(/\* (.*?)(?=\n\*|\n$)/g, '<li class="ml-5 list-disc">$1</li>')
+                                .replace(/\n/g, '<br>');
+                            
+                            cvResults.innerHTML = htmlFeedback;
+                            cvResults.style.display = 'block';
+                        } else {
+                            throw new Error("No feedback was generated.");
+                        }
+                    } catch (error) {
+                        console.error("Error with Gemini API:", error);
+                        cvResults.innerHTML = `<p class="text-red-400">Sorry, we were unable to analyze your CV at this time. Please try again later.</p>`;
+                        cvResults.style.display = 'block';
+                    } finally {
+                        cvSubmitBtn.disabled = false;
+                        cvLoader.classList.add('hidden');
+                        cvBtnText.textContent = 'Get Feedback';
+                    }
                 });
             }
-            
-            // Set initial page
-            showPage('home', document.querySelector('.nav-link[href="#home"]'));
+
+            // --- Gemini AI Job Description Assistant ---
+            const jdTitle = document.getElementById('jd-title');
+            const jdInput = document.getElementById('jd-input');
+            const jdSubmitBtn = document.getElementById('jd-submit-btn');
+            const jdResults = document.getElementById('jd-results');
+            const jdLoader = document.getElementById('jd-loader');
+            const jdBtnText = document.getElementById('jd-btn-text');
+
+            if (jdSubmitBtn) {
+                jdSubmitBtn.addEventListener('click', async () => {
+                    const title = jdTitle.value;
+                    const details = jdInput.value;
+                    if (title.trim().length < 3 || details.trim().length < 20) {
+                        jdResults.style.display = 'block';
+                        jdResults.innerHTML = `<p class="text-red-400">Please provide a job title and key responsibilities.</p>`;
+                        return;
+                    }
+
+                    jdSubmitBtn.disabled = true;
+                    jdLoader.classList.remove('hidden');
+                    jdBtnText.textContent = 'Generating...';
+                    jdResults.style.display = 'none';
+
+                    try {
+                        const apiKey = "";
+                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                        const systemPrompt = "You are an expert legal recruitment copywriter for 'Stratford Gray'. Your tone is professional, engaging, and authoritative. Create a full job description based on the provided title and key responsibilities. The description must be well-structured with the following markdown sections: **The Role**, **Key Responsibilities**, **The Ideal Candidate**, and **What We Offer**. Ensure the language is inclusive and compelling to attract top-tier legal professionals.";
+
+                        const payload = {
+                            contents: [{ parts: [{ text: `Job Title: ${title}\n\nKey Details: ${details}` }] }],
+                            systemInstruction: { parts: [{ text: systemPrompt }] },
+                        };
+
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        if (!response.ok) throw new Error(`API Error: ${response.status} ${response.statusText}`);
+                        const result = await response.json();
+                        const description = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                        
+                        if (description) {
+                            let htmlDescription = description
+                                .replace(/\*\*(.*?)\*\*/g, '<h5 class="font-bold text-white mt-4 mb-2">$1</h5>')
+                                .replace(/\* (.*?)(?=\n\*|\n$)/g, '<li class="ml-5 list-disc">$1</li>')
+                                .replace(/\n/g, '<br>');
+                            
+                            jdResults.innerHTML = htmlDescription;
+                            jdResults.style.display = 'block';
+                        } else {
+                            throw new Error("No description was generated.");
+                        }
+                    } catch (error) {
+                        console.error("Error with Gemini API:", error);
+                        jdResults.innerHTML = `<p class="text-red-400">Sorry, we were unable to generate a job description at this time. Please try again later.</p>`;
+                        jdResults.style.display = 'block';
+                    } finally {
+                        jdSubmitBtn.disabled = false;
+                        jdLoader.classList.add('hidden');
+                        jdBtnText.textContent = 'Generate Description';
+                    }
+                });
+            }
         });
     </script>
 </body>
